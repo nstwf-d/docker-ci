@@ -9,10 +9,6 @@ on:
       dockerhub_image:
         required: true
         type: string
-      image_version_prefix:
-        required: false
-        type: string
-        default: ''
       docker_extra_build_args:
         required: false
         type: string
@@ -45,7 +41,7 @@ jobs:
           images: |
             ${{ inputs.dockerhub_image }}
           tags: |
-            type=raw,value=${{ inputs.image_version_prefix }}${{ inputs.image_version }}_pr${{ github.event.pull_request.number }}_${{ github.head_ref }}
+            type=raw,value=${{ inputs.image_version }}_pr${{ github.event.pull_request.number }}_${{ github.head_ref }}
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6

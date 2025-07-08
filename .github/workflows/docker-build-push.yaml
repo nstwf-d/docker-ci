@@ -12,10 +12,6 @@ on:
       ghcr_image:
         required: true
         type: string
-      image_version_prefix:
-        required: false
-        type: string
-        default: ''
       docker_extra_build_args:
         required: false
         type: string
@@ -57,7 +53,7 @@ jobs:
             ${{ inputs.dockerhub_image }}
             ${{ inputs.ghcr_image }}
           tags: |
-            type=raw,value=${{ inputs.image_version_prefix }}${{ inputs.image_version }}
+            type=raw,value=${{ inputs.image_version }}
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
