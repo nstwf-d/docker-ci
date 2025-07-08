@@ -61,7 +61,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🐳 Built Docker image (**version: ${{ inputs.image_version }}):
+            🐳 Built Docker image (**version: ${{ inputs.image_version }}**):
             ```sh
             docker pull ${{ steps.meta.outputs.tags }}
             ```
