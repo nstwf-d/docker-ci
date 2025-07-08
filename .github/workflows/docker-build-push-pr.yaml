@@ -17,11 +17,6 @@ on:
         required: false
         type: string
         default: ''
-    secrets:
-      dockerhub_username:
-        required: true
-      dockerhub_password:
-        required: true
 
 jobs:
   docker-build-push:
