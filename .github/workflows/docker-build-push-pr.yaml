@@ -69,3 +69,28 @@ jobs:
             ```sh
             docker pull ${{ steps.meta.outputs.tags }}
             ```
+
+  docker-remove-test-images:
+    if: github.event.action == 'closed'
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Docker Registry Image Cleaner
+        uses: nstwfdev/docker-registry-image-cleaner@1.0.1
+        with:
+          dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          dockerhub_repo: ${{ inputs.dockerhub_image }}
+          image_prefix: |
+            ${{ inputs.image_version }}_pr${{ github.event.pull_request.number }}
+
+      - name: Add PR Comment about cleanup
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🐳 Cleanup test images for current pr (**version: ${{ inputs.image_version }}**):
