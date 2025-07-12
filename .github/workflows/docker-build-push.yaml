@@ -16,6 +16,15 @@ on:
         required: false
         type: string
         default: ''
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_PASSWORD:
+        required: true
+      GHCR_USERNAME:
+        required: false
+      GHCR_PASSWORD:
+        required: true
 
 jobs:
   docker-build-push:
