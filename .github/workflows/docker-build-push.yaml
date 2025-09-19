@@ -28,7 +28,7 @@ on:
 
 jobs:
   docker-build-push:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
 
     steps:
       - name: Checkout code
