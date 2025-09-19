@@ -28,7 +28,7 @@ on:
 
 jobs:
   docker-build-push:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -36,10 +36,6 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-        with:
-          install: true
-          use: true
-          driver-opts: image=moby/buildkit:latest
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
