@@ -32,7 +32,7 @@ on:
 
 jobs:
   docker-build-push:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -73,7 +73,8 @@ jobs:
         with:
           push: true
           platforms: |
-            ${{ inputs.platforms }}
+            linux/amd64
+            linux/arm64
           build-args: |
             ${{ inputs.docker_extra_build_args }}
           tags: ${{ steps.meta.outputs.tags }}
