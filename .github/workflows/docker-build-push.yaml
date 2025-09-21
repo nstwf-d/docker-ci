@@ -77,4 +77,4 @@ jobs:
           build-args: |
             ${{ inputs.docker_extra_build_args }}
           tags: ${{ steps.meta.outputs.tags }}
-          outputs: type=image,name=target,annotation-index.org.opencontainers.image.source=Myhttps://github.com/nstwf-d${{github.event.repository.name}}
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.source=https://github.com/nstwf-d${{github.event.repository.name}}
